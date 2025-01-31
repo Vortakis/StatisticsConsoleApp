@@ -54,18 +54,18 @@ namespace SalesMetricsApp.Statistics
             switch (menuChoice)
             {
                 case 1:
-                    var dateRangeAver = _userPromptService.Prompt<DateTime[]>(PromptType.DateRange, "Enter StartDate and EndDate, separated by 'to':");
+                    var dateRangeAver = _userPromptService.Prompt<DateTime[]>(PromptType.DateRange, "Enter StartDate and EndDate, separated by 'to': (Suggested Date Format: 'dd/MM/yy')");
                     result = _statisticsService.Average(dateRangeAver[0], dateRangeAver[1]);
                     result.Description = $"Average between {dateRangeAver[0].ToString(dateFormat)} to {dateRangeAver[1].ToString(dateFormat)}";
                     break;
                 case 2:
-                    var dateSD = _userPromptService.Prompt<DateTime>(PromptType.Date, $"Enter Specific Date:");
+                    var dateSD = _userPromptService.Prompt<DateTime>(PromptType.Date, $"Enter Specific Date: (Suggested Date Format: 'dd/MM/yy')");
                     result = _statisticsService.StandardDeviation(dateSD);
                     result.Description = $"Standard Deviation on {dateSD.ToString(dateFormat)}";
 
                     break;
                 case 3:
-                    var dateRangeSD = _userPromptService.Prompt<DateTime[]>(PromptType.DateRange, "Enter StartDate and EndDate, separated by 'to':");
+                    var dateRangeSD = _userPromptService.Prompt<DateTime[]>(PromptType.DateRange, "Enter StartDate and EndDate, separated by 'to': (Suggested Date Format: 'dd/MM/yy')");
                     result = _statisticsService.StandardDeviation(dateRangeSD[0], dateRangeSD[1]);
                     result.Description = $"Standard Deviation between {dateRangeSD[0].ToString(dateFormat)} to {dateRangeSD[1].ToString(dateFormat)}";
 
